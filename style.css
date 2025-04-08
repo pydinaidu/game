@@ -1,0 +1,109 @@
+.message {
+  font-size: 22px;
+  font-weight: bold;
+  display: none;         /* hidden by default */
+  margin-top: 15px;
+}
+
+.message.win {
+  color: #2ecc71;         /* green for win */
+}
+
+.message.lose {
+  color: #e74c3c;         /* red for lose */
+}
+
+body {
+  background: linear-gradient(135deg, #f9fbe7, #e0f7fa);
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.info {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #34495e;
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(4, 80px);
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.card {
+  width: 80px;
+  height: 80px;
+  background-color: #81ecec;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card.flipped {
+  background-color: #a29bfe;
+  pointer-events: none;
+}
+
+.card.matched {
+  background-color: #dfe6e9;
+  pointer-events: none;
+}
+
+.message {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.message.win {
+  color: #2ecc71;
+}
+
+.message.lose {
+  color: #e74c3c;
+}
+#game-board,
+#restart-btn,
+.info,
+.message {
+  display: none;
+}
+#restart-btn {
+  background-color: #0984e3;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#restart-btn:hover {
+  background-color: #74b9ff;
+}
