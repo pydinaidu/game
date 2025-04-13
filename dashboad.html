@@ -135,7 +135,7 @@
   <script>
     function launchGame(game) {
       const iframe = document.getElementById("game-frame");
-      iframe.src = `games/${game}.html`;
+      iframe.src = `./${game}.html`;
       iframe.style.display = 'block';
       window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     }
