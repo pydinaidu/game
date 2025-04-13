@@ -132,14 +132,21 @@
 
   <footer>
     <p>&copy; 2025 Mini Games Hub. Made with ❤️ by Naidu</p>
+    <button onclick="restartGame()" style="background-color: #f44336; color: white; border: none; padding: 10px 20px; font-size: 16px; cursor: pointer; border-radius: 5px; margin: 10px;">🔄 Restart</button>
+    <button onclick="history.back()" style="background-color: #333; color: white; border: none; padding: 10px 20px; font-size: 16px; cursor: pointer; border-radius: 5px; margin: 10px;">🔙 Back</button>
   </footer>
 
   <script>
     function launchGame(game) {
       const iframe = document.getElementById("game-frame");
-      iframe.src = `./${game}.html`;
+      iframe.src = `games/${game}.html`;
       iframe.style.display = 'block';
       window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+      function restartGame() {
+      const iframe = document.getElementById("game-frame");
+      const currentSrc = iframe.src;
+      iframe.src = currentSrc;
     }
   </script>
 </body>
