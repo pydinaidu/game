@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mini Games Hub</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #4caf50;
+      color: white;
+      width: 100%;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    .games-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 40px;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    .game-card {
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    }
+
+    .game-card:nth-child(2) {
+      background: linear-gradient(135deg, #c2e9fb 0%, #a1c4fd 100%);
+    }
+
+    .game-card:nth-child(3) {
+      background: linear-gradient(135deg, #fddb92 0%, #d1fdff 100%);
+    }
+
+    .game-card:nth-child(4) {
+      background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+    }
+
+    .game-card:hover {
+      transform: scale(1.03);
+    }
+
+    .game-card img {
+      width: 100%;
+      max-height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .game-card h3 {
+      margin-bottom: 10px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+      margin-top: 20px;
+    }
+
+    #game-frame {
+      display: none;
+    }
+
+    footer {
+      background-color: #4caf50;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      width: 100%;
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🎮 Mini Games Hub</h1>
+    <p>Choose a game below and start having fun!</p>
+  </header>
+
+  <div class="games-container">
+    <div class="game-card" onclick="launchGame('puzzle')">
+      <img src="images/puzzle.jpg" alt="Puzzle Game">
+      <h3>🧩 Number Puzzle</h3>
+      <p>Arrange numbers in the correct order.</p>
+    </div>
+    <div class="game-card" onclick="alert('Coming Soon!')">
+      <img src="images/memory.jpg" alt="Memory Match">
+      <h3>🧠 Memory Match</h3>
+      <p>Match the pairs and test your memory.</p>
+    </div>
+    <div class="game-card" onclick="alert('Coming Soon!')">
+      <img src="images/rps.jpg" alt="Rock Paper Scissors">
+      <h3>✊🖐✌ Rock Paper Scissors</h3>
+      <p>Play against the computer.</p>
+    </div>
+    <div class="game-card" onclick="alert('Coming Soon!')">
+      <img src="images/quiz.jpg" alt="Quiz Game">
+      <h3>📝 Quiz Game</h3>
+      <p>Answer questions and test your knowledge.</p>
+    </div>
+  </div>
+
+  <iframe id="game-frame" src="games/puzzle.html"></iframe>
+
+  <footer>
+    <p>&copy; 2025 Mini Games Hub. Made with ❤️ by Naidu</p>
+  </footer>
+
+  <script>
+    function launchGame(game) {
+      const iframe = document.getElementById("game-frame");
+      iframe.src = `games/${game}.html`;
+      iframe.style.display = 'block';
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
