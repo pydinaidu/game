@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Number Puzzle Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    h1 {
+      margin-bottom: 10px;
+    }
+    #guide {
+      background: #fff3cd;
+      border: 1px solid #ffeeba;
+      padding: 10px 15px;
+      border-radius: 5px;
+      max-width: 350px;
+      text-align: center;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+    #puzzle {
+      display: grid;
+      grid-template-columns: repeat(4, 80px);
+      grid-template-rows: repeat(4, 80px);
+      gap: 5px;
+    }
+    .tile {
+      width: 80px;
+      height: 80px;
+      background-color: #4caf50;
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.2s;
+    }
+    .empty {
+      background-color: #ccc;
+      cursor: default;
+    }
+    #controls {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Number Puzzle Game</h1>
+  <div id="guide">
+    🎯 <strong>Goal:</strong> Arrange the numbers from 1 to 15 in order with the empty space at the end.<br />
+    👉 <strong>How to Play:</strong> Click a tile next to the empty space to move it. Keep moving until all numbers are in order.
+  </div>
+  <div id="puzzle"></div>
+  <div id="controls">
+    <button onclick="shuffleTiles()">Shuffle</button>
+  </div>
+
+  <script>
+    const puzzle = document.getElementById("puzzle");
+    let tiles = [];
+
+    function createTiles() {
+      tiles = [];
+      for (let i = 1; i <= 15; i++) {
+        tiles.push(i);
+      }
+      tiles.push(0); // 0 is the empty space
+    }
+
+    function drawTiles() {
+      puzzle.innerHTML = "";
+      tiles.forEach((num, index) => {
+        const tile = document.createElement("div");
+        tile.classList.add("tile");
+        if (num === 0) {
+          tile.classList.add("empty");
+        } else {
+          tile.textContent = num;
+          tile.addEventListener("click", () => moveTile(index));
+        }
+        puzzle.appendChild(tile);
+      });
+    }
+
+    function shuffleTiles() {
+      for (let i = tiles.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [tiles[i], tiles[j]] = [tiles[j], tiles[i]];
+      }
+      drawTiles();
+    }
+
+    function moveTile(index) {
+      const emptyIndex = tiles.indexOf(0);
+      const validMoves = [
+        emptyIndex - 1,
+        emptyIndex + 1,
+        emptyIndex - 4,
+        emptyIndex + 4,
+      ];
+
+      if (
+        validMoves.includes(index) &&
+        Math.abs((index % 4) - (emptyIndex % 4)) <= 1
+      ) {
+        [tiles[emptyIndex], tiles[index]] = [tiles[index], tiles[emptyIndex]];
+        drawTiles();
+        checkWin();
+      }
+    }
+
+    function checkWin() {
+      for (let i = 0; i < 15; i++) {
+        if (tiles[i] !== i + 1) return;
+      }
+      if (tiles[15] === 0) {
+        alert("🎉 Congratulations! You solved the puzzle!");
+      }
+    }
+
+    createTiles();
+    drawTiles();
+  </script>
+</body>
+</html>
