@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students Management - School MS</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .students-container {
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+        }
+
+        .students-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .add-student-btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .add-student-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .students-filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .filter-select {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            min-width: 150px;
+        }
+
+        .students-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .students-table th,
+        .students-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .students-table th {
+            background-color: var(--bg-light);
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        .students-table tr:hover {
+            background-color: var(--bg-light);
+        }
+
+        .student-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .action-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .edit-btn { color: var(--primary-color); }
+        .delete-btn { color: var(--danger-color); }
+        .view-btn { color: var(--success-color); }
+
+        .action-btn:hover {
+            opacity: 0.8;
+        }
+
+        .student-status {
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .status-active {
+            background-color: #e6f4ea;
+            color: var(--success-color);
+        }
+
+        .status-inactive {
+            background-color: #fce8e8;
+            color: var(--danger-color);
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .pagination button {
+            background: none;
+            border: 1px solid #ddd;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .pagination button.active {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-color: var(--primary-color);
+        }
+
+        .pagination button:hover:not(.active) {
+            background-color: var(--bg-light);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="logo">
+                <h2>SchoolMS</h2>
+            </div>
+            <ul class="nav-links">
+                <li>
+                    <a href="index.html">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="students.html">
+                        <i class="fas fa-user-graduate"></i>
+                        <span>Students</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="teachers.html">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <span>Teachers</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="classes.html">
+                        <i class="fas fa-school"></i>
+                        <span>Classes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="attendance.html">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Attendance</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="exams.html">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Exams</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="library.html">
+                        <i class="fas fa-book"></i>
+                        <span>Library</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search students...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="user-info">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="user">
+                        <img src="https://via.placeholder.com/40" alt="User">
+                        <span>Admin User</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Students Content -->
+            <div class="students-container">
+                <div class="students-header">
+                    <h2>Students Management</h2>
+                    <button class="add-student-btn">
+                        <i class="fas fa-plus"></i>
+                        Add New Student
+                    </button>
+                </div>
+
+                <div class="students-filters">
+                    <select class="filter-select">
+                        <option value="">All Classes</option>
+                        <option value="class-10">Class 10</option>
+                        <option value="class-9">Class 9</option>
+                        <option value="class-8">Class 8</option>
+                    </select>
+                    <select class="filter-select">
+                        <option value="">All Sections</option>
+                        <option value="A">Section A</option>
+                        <option value="B">Section B</option>
+                        <option value="C">Section C</option>
+                    </select>
+                    <select class="filter-select">
+                        <option value="">Status</option>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+
+                <table class="students-table">
+                    <thead>
+                        <tr>
+                            <th>Student ID</th>
+                            <th>Name</th>
+                            <th>Class</th>
+                            <th>Section</th>
+                            <th>Parent Name</th>
+                            <th>Contact</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>STU001</td>
+                            <td>John Doe</td>
+                            <td>Class 10</td>
+                            <td>A</td>
+                            <td>Robert Doe</td>
+                            <td>+1234567890</td>
+                            <td><span class="student-status status-active">Active</span></td>
+                            <td>
+                                <div class="student-actions">
+                                    <button class="action-btn view-btn" title="View Details">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="action-btn edit-btn" title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn delete-btn" title="Delete">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>STU002</td>
+                            <td>Jane Smith</td>
+                            <td>Class 9</td>
+                            <td>B</td>
+                            <td>Mary Smith</td>
+                            <td>+1234567891</td>
+                            <td><span class="student-status status-active">Active</span></td>
+                            <td>
+                                <div class="student-actions">
+                                    <button class="action-btn view-btn" title="View Details">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="action-btn edit-btn" title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn delete-btn" title="Delete">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>STU003</td>
+                            <td>Mike Johnson</td>
+                            <td>Class 10</td>
+                            <td>C</td>
+                            <td>Sarah Johnson</td>
+                            <td>+1234567892</td>
+                            <td><span class="student-status status-inactive">Inactive</span></td>
+                            <td>
+                                <div class="student-actions">
+                                    <button class="action-btn view-btn" title="View Details">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="action-btn edit-btn" title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn delete-btn" title="Delete">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="pagination">
+                    <button>&lt;</button>
+                    <button class="active">1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>&gt;</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 

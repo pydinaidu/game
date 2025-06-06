@@ -1,146 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mini Games Hub</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f7f7f7;
-      color: #333;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-    }
-
-    header {
-      background-color: #4caf50;
-      color: white;
-      width: 100%;
-      padding: 20px;
-      text-align: center;
-    }
-
-    h1 {
-      margin: 0;
-    }
-
-    .games-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 40px;
-      width: 100%;
-      max-width: 1000px;
-    }
-
-    .game-card {
-      border-radius: 10px;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      cursor: pointer;
-      transition: transform 0.2s ease;
-      background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-    }
-
-    .game-card:nth-child(2) {
-      background: linear-gradient(135deg, #c2e9fb 0%, #a1c4fd 100%);
-    }
-
-    .game-card:nth-child(3) {
-      background: linear-gradient(135deg, #fddb92 0%, #d1fdff 100%);
-    }
-
-    .game-card:nth-child(4) {
-      background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
-    }
-
-    .game-card:hover {
-      transform: scale(1.03);
-    }
-
-    .game-card img {
-      width: 100%;
-      max-height: 150px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 10px;
-    }
-
-    .game-card h3 {
-      margin-bottom: 10px;
-    }
-
-   iframe {
-      width: 600%;
-      height: 600px;
-      border: none;
-      margin-top: 20px;
-    }
-
-    #game-frame {
-
-      display: none;
-    }
-
-    footer {
-      background-color: #4caf50;
-      color: white;
-      text-align: center;
-      padding: 15px;
-      width: 100%;
-      margin-top: auto;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-  <header>
-    <h1>🎮 Mini Games Hub</h1>
-    <p>Choose a game below and start having fun!</p>
-  </header>
+    <div class="container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="logo">
+                <h2>SchoolMS</h2>
+            </div>
+            <ul class="nav-links">
+                <li class="active">
+                    <a href="index.html">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="students.html">
+                        <i class="fas fa-user-graduate"></i>
+                        <span>Students</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="teachers.html">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <span>Teachers</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="classes.html">
+                        <i class="fas fa-school"></i>
+                        <span>Classes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="attendance.html">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Attendance</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="exams.html">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Exams</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="library.html">
+                        <i class="fas fa-book"></i>
+                        <span>Library</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
 
-  <div class="games-container">
-    <div class="game-card" onclick="launchGame('numberpuzzle')">
-      <img src="images/puzzle.jpg" alt="Puzzle Game">
-      <h3>🧩 Number Puzzle</h3>
-      <p>Arrange numbers in the correct order.</p>
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="user-info">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="user">
+                        <img src="https://via.placeholder.com/40" alt="User">
+                        <span>Admin User</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard">
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon students">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>Total Students</h3>
+                            <p class="stat-number">1,250</p>
+                            <p class="stat-change positive">+15% from last month</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon teachers">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>Total Teachers</h3>
+                            <p class="stat-number">85</p>
+                            <p class="stat-change positive">+5% from last month</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon revenue">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>Revenue</h3>
+                            <p class="stat-number">$125,000</p>
+                            <p class="stat-change positive">+20% from last month</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon attendance">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>Attendance Rate</h3>
+                            <p class="stat-number">95%</p>
+                            <p class="stat-change positive">+2% from last month</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity and Calendar Section -->
+                <div class="dashboard-grid">
+                    <!-- Recent Activity -->
+                    <div class="recent-activity">
+                        <h2>Recent Activity</h2>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-user-plus"></i>
+                                </div>
+                                <div class="activity-details">
+                                    <p>New student registered</p>
+                                    <small>John Doe - Grade 10</small>
+                                    <span class="time">2 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <div class="activity-details">
+                                    <p>Exam results published</p>
+                                    <small>Mathematics - Grade 9</small>
+                                    <span class="time">5 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-calendar-check"></i>
+                                </div>
+                                <div class="activity-details">
+                                    <p>Parent meeting scheduled</p>
+                                    <small>Grade 8 - Section A</small>
+                                    <span class="time">1 day ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calendar -->
+                    <div class="calendar-section">
+                        <h2>Calendar</h2>
+                        <div id="calendar"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
-    <div class="game-card" onclick="launchGame('memory')">
-      <img src="images/memory.jpg" alt="Memory Match">
-      <h3>🧠 Memory Match</h3>
-      <p>Match the pairs and test your memory.</p>
-    </div>
-    <div class="game-card" onclick="alert('Coming Soon!')">
-      <img src="images/rps.jpg" alt="Rock Paper Scissors">
-      <h3>✊🖐✌ Rock Paper Scissors</h3>
-      <p>Play against the computer.</p>
-    </div>
-    <div class="game-card" onclick="alert('Coming Soon!')">
-      <img src="images/quiz.jpg" alt="Quiz Game">
-      <h3>📝 Quiz Game</h3>
-      <p>Answer questions and test your knowledge.</p>
-    </div>
-  </div>
-
-  <iframe id="game-frame" src="./numberpuzzle.html"></iframe>
-   <iframe id="game-frame" src="./memory.html"></iframe>
-   <iframe id="game-frame" src="games/puzzle.html"></iframe>
-
-
-
-  <script>
-    function launchGame(game) {
-      const iframe = document.getElementById("game-frame");
-      iframe.src = `./${game}.html`;
-      iframe.style.display = 'block';
-      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-    }
-     
-  </script>
+    <script src="script.js"></script>
 </body>
-</html>
+</html> 
