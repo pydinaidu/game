@@ -1,179 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>School Management System</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MAN OF POTTER - Dynamic Bill</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background: #f4f4f4;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .header {
+      text-align: center;
+    }
+    .header img {
+      width: 100px;
+      margin-bottom: 10px;
+    }
+    .subtitle {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    input[type="text"], input[type="number"], input[type="date"] {
+      width: 100%;
+      padding: 8px;
+      margin: 4px 0;
+    }
+    .field-label {
+      display: block;
+      margin-bottom: 6px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #000;
+      padding: 10px;
+      text-align: center;
+    }
+    .total-row td {
+      font-weight: bold;
+    }
+    .btn {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 14px;
+    }
+    .footer {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+    .print-text {
+      display: none;
+    }
+    .hide-on-print {
+      display: table-cell;
+    }
+    @media print {
+      .btn, button, input {
+        display: none !important;
+      }
+      .print-text {
+        display: inline !important;
+      }
+      .hide-on-print {
+        display: none !important;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Sidebar -->
-        <nav class="sidebar">
-            <div class="logo">
-                <h2>SchoolMS</h2>
-            </div>
-            <ul class="nav-links">
-                <li class="active">
-                    <a href="index.html">
-                        <i class="fas fa-home"></i>
-                        <span>Dashboard</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="students.html">
-                        <i class="fas fa-user-graduate"></i>
-                        <span>Students</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="teachers.html">
-                        <i class="fas fa-chalkboard-teacher"></i>
-                        <span>Teachers</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="classes.html">
-                        <i class="fas fa-school"></i>
-                        <span>Classes</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="attendance.html">
-                        <i class="fas fa-calendar-check"></i>
-                        <span>Attendance</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="exams.html">
-                        <i class="fas fa-file-alt"></i>
-                        <span>Exams</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="library.html">
-                        <i class="fas fa-book"></i>
-                        <span>Library</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <!-- Header -->
-            <header class="header">
-                <div class="search-bar">
-                    <input type="text" placeholder="Search...">
-                    <i class="fas fa-search"></i>
-                </div>
-                <div class="user-info">
-                    <div class="notifications">
-                        <i class="fas fa-bell"></i>
-                        <span class="badge">3</span>
-                    </div>
-                    <div class="user">
-                        <img src="https://via.placeholder.com/40" alt="User">
-                        <span>Admin User</span>
-                    </div>
-                </div>
-            </header>
+<div class="container" id="bill">
+  <div class="header">
+    <img src="./log.jpeg" alt="Logo" />
+    <h1>MAN OF POTTER</h1>
+    <div class="subtitle">Clay is our world</div>
+  </div>
 
-            <!-- Dashboard Content -->
-            <div class="dashboard">
-                <!-- Stats Cards -->
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-icon students">
-                            <i class="fas fa-user-graduate"></i>
-                        </div>
-                        <div class="stat-details">
-                            <h3>Total Students</h3>
-                            <p class="stat-number">1,250</p>
-                            <p class="stat-change positive">+15% from last month</p>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon teachers">
-                            <i class="fas fa-chalkboard-teacher"></i>
-                        </div>
-                        <div class="stat-details">
-                            <h3>Total Teachers</h3>
-                            <p class="stat-number">85</p>
-                            <p class="stat-change positive">+5% from last month</p>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon revenue">
-                            <i class="fas fa-dollar-sign"></i>
-                        </div>
-                        <div class="stat-details">
-                            <h3>Revenue</h3>
-                            <p class="stat-number">$125,000</p>
-                            <p class="stat-change positive">+20% from last month</p>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon attendance">
-                            <i class="fas fa-calendar-check"></i>
-                        </div>
-                        <div class="stat-details">
-                            <h3>Attendance Rate</h3>
-                            <p class="stat-number">95%</p>
-                            <p class="stat-change positive">+2% from last month</p>
-                        </div>
-                    </div>
-                </div>
+  <h3>Customer Details</h3>
+  <label class="field-label">Name: <input type="text" id="custName" value="Vamsi" /><span class="print-text" id="printName">Vamsi</span></label>
+  <label class="field-label">Bill No: <input type="text" id="billNo" value="0213" /><span class="print-text" id="printBillNo">0213</span></label>
+  <label class="field-label">Address: <input type="text" id="custAddr" value="HYD - KPHB" /><span class="print-text" id="printAddr">HYD - KPHB</span></label>
+  <label class="field-label">Date: <input type="text" id="billDate" value="2025-07-28" /><span class="print-text" id="printDate">28-07-2025</span></label>
+  <label class="field-label">Phone: <input type="text" id="custPhone" value="9573697303" /><span class="print-text" id="printPhone">9573697303</span></label>
 
-                <!-- Recent Activity and Calendar Section -->
-                <div class="dashboard-grid">
-                    <!-- Recent Activity -->
-                    <div class="recent-activity">
-                        <h2>Recent Activity</h2>
-                        <div class="activity-list">
-                            <div class="activity-item">
-                                <div class="activity-icon">
-                                    <i class="fas fa-user-plus"></i>
-                                </div>
-                                <div class="activity-details">
-                                    <p>New student registered</p>
-                                    <small>John Doe - Grade 10</small>
-                                    <span class="time">2 hours ago</span>
-                                </div>
-                            </div>
-                            <div class="activity-item">
-                                <div class="activity-icon">
-                                    <i class="fas fa-file-alt"></i>
-                                </div>
-                                <div class="activity-details">
-                                    <p>Exam results published</p>
-                                    <small>Mathematics - Grade 9</small>
-                                    <span class="time">5 hours ago</span>
-                                </div>
-                            </div>
-                            <div class="activity-item">
-                                <div class="activity-icon">
-                                    <i class="fas fa-calendar-check"></i>
-                                </div>
-                                <div class="activity-details">
-                                    <p>Parent meeting scheduled</p>
-                                    <small>Grade 8 - Section A</small>
-                                    <span class="time">1 day ago</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+  <h3>Add Items</h3>
+  <table id="itemsTable">
+    <thead>
+      <tr>
+        <th>S.NO</th>
+        <th>DESCRIPTION</th>
+        <th>UNIT PRICE</th>
+        <th>QTY</th>
+        <th>TOTAL</th>
+        <th class="hide-on-print">ACTION</th>
+      </tr>
+    </thead>
+    <tbody id="itemsBody">
+      <!-- rows go here -->
+    </tbody>
+    <tfoot>
+      <tr class="total-row">
+        <td colspan="4">SUBTOTAL</td>
+        <td id="subtotal">0.00</td>
+        <td class="hide-on-print"></td>
+      </tr>
+    </tfoot>
+  </table>
 
-                    <!-- Calendar -->
-                    <div class="calendar-section">
-                        <h2>Calendar</h2>
-                        <div id="calendar"></div>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </div>
-    <script src="script.js"></script>
+  <div class="btn">
+    <button onclick="addItem()">➕ Add Item</button>
+    <button onclick="window.print()">🖨️ Print or Save PDF</button>
+  </div>
+
+  <div class="footer">
+    <strong>Email:</strong> manofpotter2022@gmail.com<br>
+    <strong>Phone:</strong> 9985241655<br>
+    <strong>Address:</strong> Vizianagaram - 535002, Andhra Pradesh
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+  let itemCount = 0;
+
+  function addItem(description = "", price = "", qty = "") {
+    const tbody = document.getElementById("itemsBody");
+    const row = document.createElement("tr");
+    itemCount++;
+
+    row.innerHTML = `
+      <td>${itemCount}</td>
+      <td>
+        <input type="text" value="${description}" oninput="updateTotal()" />
+        <span class="print-text"></span>
+      </td>
+      <td>
+        <input type="number" value="${price}" oninput="updateTotal()" />
+        <span class="print-text"></span>
+      </td>
+      <td>
+        <input type="number" value="${qty}" oninput="updateTotal()" />
+        <span class="print-text"></span>
+      </td>
+      <td class="item-total"><span class="total-text">0.00</span></td>
+      <td class="hide-on-print"><button onclick="removeRow(this)">❌</button></td>
+    `;
+    tbody.appendChild(row);
+    updateTotal();
+  }
+
+  function updateTotal() {
+    let subtotal = 0;
+    const rows = document.querySelectorAll("#itemsBody tr");
+
+    rows.forEach(row => {
+      const descInput = row.cells[1].querySelector("input");
+      const priceInput = row.cells[2].querySelector("input");
+      const qtyInput = row.cells[3].querySelector("input");
+
+      const descSpan = row.cells[1].querySelector("span.print-text");
+      const priceSpan = row.cells[2].querySelector("span.print-text");
+      const qtySpan = row.cells[3].querySelector("span.print-text");
+      const totalSpan = row.cells[4].querySelector(".total-text");
+
+      const price = parseFloat(priceInput.value) || 0;
+      const qty = parseFloat(qtyInput.value) || 0;
+      const total = price * qty;
+
+      descSpan.textContent = descInput.value;
+      priceSpan.textContent = price.toFixed(2);
+      qtySpan.textContent = qty.toFixed(2);
+      totalSpan.textContent = total.toFixed(2);
+
+      subtotal += total;
+    });
+
+    document.getElementById("subtotal").textContent = subtotal.toFixed(2);
+  }
+
+  function removeRow(button) {
+    const row = button.closest("tr");
+    row.remove();
+    itemCount--;
+    updateTotal();
+    renumberRows();
+  }
+
+  function renumberRows() {
+    const rows = document.querySelectorAll("#itemsBody tr");
+    rows.forEach((row, index) => {
+      row.cells[0].textContent = index + 1;
+    });
+  }
+
+  window.onbeforeprint = () => {
+    document.getElementById("printName").textContent = document.getElementById("custName").value;
+    document.getElementById("printBillNo").textContent = document.getElementById("billNo").value;
+    document.getElementById("printAddr").textContent = document.getElementById("custAddr").value;
+    const dateVal = document.getElementById("billDate").value;
+    const formattedDate = dateVal ? new Date(dateVal).toLocaleDateString("en-GB") : "";
+    document.getElementById("printDate").textContent = formattedDate;
+    document.getElementById("printPhone").textContent = document.getElementById("custPhone").value;
+  };
+
+  // Initialize flatpickr
+  flatpickr("#billDate", {
+    dateFormat: "Y-m-d",
+    defaultDate: "today"
+  });
+
+  // Initial sample items
+  addItem("7inch dyes", "1400", "1");
+  addItem("9inch dyes", "1500", "1");
+  addItem("Delivery Charges", "269", "1");
+</script>
+
 </body>
-</html> 
+</html>
