@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MAN OF POTTER</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-container">
+    <div class="logo-brand">
+      <img src="https://raw.githubusercontent.com/pydinaidu/game/main/log1.jpeg" class="logo" />
+      <span class="brand-name">MAN OF POTTER</span>
+    </div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+
+
+<section id="about" class="about">
+  <h2>About Us</h2>
+  <div class="about-content">
+    <p>
+      MAN OF POTTER was founded with a deep love for earthy traditions and timeless artistry.
+      What started as a humble studio is now a movement to revive clay craft with modern aesthetics.
+    </p>
+    <p>
+      Every piece is handmade by local artisans using eco-friendly materials. We believe in
+      sustainability, beauty, and the healing power of handmade things.
+    </p>
+  </div>
+</section>
+
+
+
+  <section id="gallery" class="gallery">
+    <h2>Our Pottery Collection</h2>
+    <div class="gallery-grid">
+      <div class="item-card">
+        <img src="https://raw.githubusercontent.com/pydinaidu/game/main/log1.jpeg" alt="Clay Vase" onclick="openLightbox(this)">
+        <h3>Clay Vase</h3>
+        <p>Handcrafted with red clay, perfect for home décor.</p>
+        <span>₹350</span>
+      </div>
+      <div class="item-card">
+        <img src="https://raw.githubusercontent.com/pydinaidu/game/main/log1.jpeg" alt="Flower Pot" onclick="openLightbox(this)">
+        <h3>Flower Pot</h3>
+        <p>Natural finish pot ideal for indoor plants.</p>
+        <span>₹280</span>
+      </div>
+      <div class="item-card">
+        <img src="https://raw.githubusercontent.com/pydinaidu/game/main/log1.jpeg" alt="Cooking Pot" onclick="openLightbox(this)">
+        <h3>Cooking Pot</h3>
+        <p>Eco-friendly and safe for traditional cooking.</p>
+        <span>₹420</span>
+      </div>
+      <div class="item-card">
+        <img src="https://raw.githubusercontent.com/pydinaidu/game/main/log1.jpeg" alt="Tea Set" onclick="openLightbox(this)">
+        <h3>Tea Set</h3>
+        <p>Elegant tea cups with matching kettle.</p>
+        <span>₹799</span>
+      </div>
+    </div>
+  </section>
+<section id="contact" class="contact">
+  <h2>Contact Us</h2>
+  <div class="contact-container">
+    <div class="contact-info">
+      <p><strong>Address:</strong><br> 123 Clay Lane, Art Village, Andhra Pradesh, India</p>
+      <p><strong>Email:</strong><br> <a href="mailto:manofpotter@example.com">manofpotter@example.com</a></p>
+      <p><strong>Phone:</strong><br> <a href="tel:+919999999999">+91 99999 99999</a></p>
+      <a class="whatsapp" href="https://wa.me/919999999999" target="_blank">Message Us on WhatsApp</a>
+    </div>
+    <div class="map-container">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.0349396900583!2d80.6350!3d16.5062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a35ef5d2a05a12d%3A0x631f5eb7ff74970c!2sAndhra%20Pradesh!5e0!3m2!1sen!2sin!4v1234567890" 
+        width="100%" 
+        height="300" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+  <div id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="">
+  </div>
+
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-left">
+      <p>© 2025 MAN OF POTTER</p>
+      <p>Crafted with ❤️ in India</p>
+    </div>
+    <div class="footer-right">
+      <a href="https://wa.me/919999999999" target="_blank">WhatsApp</a>
+      <a href="mailto:manofpotter@example.com">Email</a>
+      <a href="#contact">Location</a>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
+
